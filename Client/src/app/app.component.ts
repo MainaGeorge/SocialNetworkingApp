@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {AccountService} from "./services/account.service";
+import {AccountService} from "./_services/account.service";
 
 @Component({
   selector: 'app-root',
