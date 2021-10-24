@@ -1,7 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
 <div class="container">
   <a class="navbar-brand" routerLink="/">Dating App</a>
-
   <ul class="navbar-nav mr-auto" >
     <ng-container *ngIf="accountService.currentUser$ | async">
       <li class="nav-item">
@@ -43,5 +42,4 @@
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
   </form>
 </div>
-
 </nav>
