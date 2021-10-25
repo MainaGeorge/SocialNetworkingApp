@@ -1,0 +1,18 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using API.Dtos;
+using API.Entities;
+
+namespace API.Interfaces
+{
+    public interface IUserRepository
+    {
+        Task<AppUser> GetUserByIdAsync(int id);
+        Task<AppUser> GetUserByUsernameAsync(string username);
+        Task<IEnumerable<AppUser>> GetUsersAsync();
+        Task<bool> SaveChangesAsync();
+        Task<AppUserDto> GetMemberByUsername(string username);
+        Task<IEnumerable<AppUserDto>> GetMembers();
+        void Update(AppUser appUser);
+    }
+}

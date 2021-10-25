@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Data;
+using API.Dtos;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,25 +15,24 @@ namespace API.Controllers
     [Route("/api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly DataContext _context;
+        private readonly IUserRepository _userRepo;
 
-        public UsersController(DataContext context)
+        public UsersController(IUserRepository userRepo)
         {
-            _context = context;
+            _userRepo = userRepo;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<AppUserDto>>> GetUsers()
         {
-            var users = await _context.Users.ToListAsync();
-
+            var users = await _userRepo.GetMembers();
             return Ok(users);
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<AppUser>> GetUser(int id)
+        [HttpGet("{username}")]
+        public async Task<ActionResult<AppUser>> GetUser(string username)
         {
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userRepo.GetMemberByUsername(username);
             if (user is not null) return Ok(user);
 
             return NotFound();

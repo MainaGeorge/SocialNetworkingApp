@@ -11,9 +11,8 @@ using Microsoft.Extensions.Hosting;
 
 namespace API.Data
 {
-    public class Seed
+    public static class Seed
     {
-
         public static async Task SeedData(DataContext context)
         {
             if (await context.Users.AnyAsync()) return;
