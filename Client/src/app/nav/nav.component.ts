@@ -18,13 +18,7 @@ export class NavComponent implements OnInit {
 
   login(){
     this.accountService.login(this.model)
-      .subscribe(resp =>
-    {
-      this.router.navigateByUrl("/members").then(() => this.toastr.success("you have signed in"));
-    }, err=> {
-        console.log(err);
-        this.toastr.error(err.error);
-      });
+      .subscribe(resp => this.router.navigateByUrl("/members").then(() => this.toastr.success("you have signed in")));
   }
 
   ngOnInit(): void {

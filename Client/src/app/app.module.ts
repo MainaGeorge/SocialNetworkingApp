@@ -14,6 +14,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberListComponent } from './members/member-list/member-list.component';
 import {SharedModule} from "./_modules/shared.module";
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import {ErrorInterceptor} from "./_interceptors/error-interceptor.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {SharedModule} from "./_modules/shared.module";
     ListsComponent,
     MessagesComponent,
     MemberDetailComponent,
-    MemberListComponent
+    MemberListComponent,
+    TestErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import {SharedModule} from "./_modules/shared.module";
     FormsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [ErrorInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
