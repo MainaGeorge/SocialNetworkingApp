@@ -16,6 +16,8 @@ import { MemberListComponent } from './members/member-list/member-list.component
 import {SharedModule} from "./_modules/shared.module";
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import {ErrorInterceptor} from "./_interceptors/error-interceptor.interceptor";
+import {JwtHttpInterceptor} from "./_interceptors/jwt.interceptor";
+import { MemberCardComponent } from './members/member-card/member-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {ErrorInterceptor} from "./_interceptors/error-interceptor.interceptor";
     MessagesComponent,
     MemberDetailComponent,
     MemberListComponent,
-    TestErrorsComponent
+    TestErrorsComponent,
+    MemberCardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,9 @@ import {ErrorInterceptor} from "./_interceptors/error-interceptor.interceptor";
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [ErrorInterceptor],
+  providers: [ErrorInterceptor, JwtHttpInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Dtos;
@@ -54,6 +55,7 @@ namespace API.Services
         {
             return await _context.Users
                 .ProjectTo<AppUserDto>(_mapper.ConfigurationProvider)
+                .Take(12)
                 .ToListAsync();
         }
 
